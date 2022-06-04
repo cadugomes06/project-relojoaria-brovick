@@ -369,15 +369,18 @@ body{
     margin-top: 3rem;
 }
 
+
+
 .carrinho i{
     font-size: 20pt;
     padding-top: 15px;
 }
 .carrinho i:hover{
-    color: #a17b07;
+    color: #ad860e;
 }
 
-.sessao-compras{    
+/*Carrinho de compras   */
+.sessao-carrinho{    
     background: #0D0A00;
     width: 500px;
     height: 600px;
@@ -385,36 +388,14 @@ body{
     right: 0px;
     top: 65px; 
     padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    display: none;
-    z-index: 1;
-    opacity: 1;
-    border-radius: 6px;
-    box-shadow: 1px 1px 2px 2px rgba(226, 174, 31, 0.3);
-}
-.sessao-compras.active{
-    display: block;
+    display: none; 
 }
 
-.sessao-compras img{
-    width: 50px;
-    padding: 10px 50px;
+.sessao-carrinho.active{
+    display: block;
+    color: white;
 }
-.sessao-compras label{
-    color: #d8c695;
-    font-family: 'IMB Plex Sans Thai Looped', Helvetica, Arial; 
-    padding: 0px 25px;
-    position: relative;
-    top: -35px;
-}
-.sessao-compras input{
-    width: 50px;
-    position: relative;
-    top: -37px;
-}
+
 
 .sessao-compras h1{
     color: #D2A10B;
