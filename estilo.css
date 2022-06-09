@@ -375,8 +375,8 @@ body{
     font-size: 20pt;
     padding-top: 15px;
 }
-.carrinho i:hover{
-    color: #ad860e;
+.carrinho i:hover {
+    color: #886807;
 }
 
 /*Carrinho de compras   */
@@ -407,9 +407,10 @@ body{
 .sessao-compras div{
     display: none;
 }
-
-.sessao-compras .comprando{
-    display: block;
+.valueCart {
+    font-size: 1rem;
+    color: #FFCC33;
+    right: -2px;
 }
 
 @media (max-width: 600px){
@@ -446,6 +447,10 @@ body{
 }
 }
 
+/*CARRINHO */
+.lista-itens li {
+    display: none;
+}
 
 
 @media  (max-width: 550px){
