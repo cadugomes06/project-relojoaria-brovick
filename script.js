@@ -71,20 +71,19 @@ function toggleMenu() {
 }
 car.addEventListener("click", toggleMenu);
 
+
 for (let i = 0; i < btnAdicionar.length; i++ ) {
   btnAdicionar[i].addEventListener('click', () => {
     cartNumbers(relogios[i]);
+    totalCost(relogios[i])
   })
 }
-
 function onLoadCartNumbers() {
   let productNumbers = localStorage.getItem('cartNumbers')   // manter o valor do storage no refresh
   if ( productNumbers ) {
     document.querySelector('.valueCart').textContent = productNumbers
   }
 }
-
-
 function cartNumbers(relogios) {
 
   productNumbers = localStorage.getItem('cartNumbers')
@@ -100,6 +99,19 @@ function cartNumbers(relogios) {
  setItens(relogios)
 }
 
+function totalCost(relogios) {
+  let totalStorage = localStorage.getItem('totalCost')
+  
+  if (totalStorage != null) {
+    totalStorage = parseInt(totalStorage)
+    localStorage.setItem('totalCost', relogios.price + totalStorage)  
+  } else {
+    localStorage.setItem('totalCost', relogios.price)  
+  }
+  console.log(relogios.price)
+
+}
+
 function setItens(relogios) {
   let cartItens = localStorage.getItem('relogiosInCart')
 
@@ -108,14 +120,11 @@ function setItens(relogios) {
   }  else {
     relogios.inCart += 1
   }
-
-
-  console.log(cartItens)
   cartItens = {
     [relogios.tag]: relogios
   }
   localStorage.setItem('relogiosInCart', JSON.stringify(cartItens))
-
+ 
 }
 
 onLoadCartNumbers()

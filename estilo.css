@@ -369,8 +369,6 @@ body{
     margin-top: 3rem;
 }
 
-
-
 .carrinho i{
     font-size: 20pt;
     padding-top: 15px;
@@ -410,7 +408,6 @@ body{
 .valueCart {
     font-size: 1rem;
     color: #FFCC33;
-    right: -2px;
 }
 
 @media (max-width: 600px){
