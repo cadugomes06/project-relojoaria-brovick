@@ -30,19 +30,19 @@ const rel = document.querySelectorAll('.relogio')
 let relogios = [
   {
     name: 'Brovick-pro',
-    tag: 'relogiopro',
+    tag: 'brovickpro',
     price: 700,
     inCart: 0,
   },
   {
     name: 'Brovick-low',
-    tag: 'relogiolow',
+    tag: 'brovicklow',
     price: 600,
     inCart: 0,
   },
   {
     name: 'Brovick-lit',
-    tag: 'relogiolit',
+    tag: 'brovicklit',
     price: 650,
     inCart: 0,
   },
@@ -124,7 +124,27 @@ function setItens(relogios) {
     [relogios.tag]: relogios
   }
   localStorage.setItem('relogiosInCart', JSON.stringify(cartItens))
- 
+}
+
+function displayCart() {
+  let cartItems = localStorage.getItem('relogiosInCart')
+  cartItems = JSON.parse(cartItems)
+  
+  let cartSection = document.querySelector('.relogios-valores')
+  if ( cartItems && cartSection  ) {
+     cartSection.innerHTML = '';
+     Object.values(cartItems).map((item) => {
+       cartSection.innerHTML += 
+       `<div class='products'>
+       <i class="fa-solid fa-circle-xmark"></i>
+        <img src='/img/${item.tag}.jpg' width='40px'/>
+        <span >${item.name}</span>
+        </div>
+        <div class='price'>R$${item.price}</div>
+        <div class='quantity'></div> `
+     })
+  }
 }
 
 onLoadCartNumbers()
+displayCart() 

@@ -369,6 +369,7 @@ body{
     margin-top: 3rem;
 }
 
+/* -----------Carrinho de compras----------------- */
 .carrinho i{
     font-size: 20pt;
     padding-top: 15px;
@@ -377,21 +378,23 @@ body{
     color: #886807;
 }
 
-/*Carrinho de compras   */
+
 .sessao-carrinho{    
-    background: #0D0A00;
-    width: 500px;
-    height: 600px;
-    position: absolute;
+    background: #0a0a0a;
+    width: 400px;
+    height: 500px;
     right: 0px;
     top: 65px; 
-    padding: 10px;
     display: none; 
+    position: absolute;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    opacity: 0.9;
 }
 
 .sessao-carrinho.active{
     display: block;
-    color: white;
 }
 
 
@@ -402,13 +405,26 @@ body{
     text-align: center;
 }
 
+.relogios-valores {
+    display: flex;
+    margin-top: 350px;
+    justify-content: space-around;
+}
+
+
+
+
 .sessao-compras div{
     display: none;
 }
 .valueCart {
     font-size: 1rem;
-    color: #FFCC33;
+    color: #ff9a01;
 }
+
+
+
+/* ------------ Resonsivo ------------- */
 
 @media (max-width: 600px){
     .titulo{
