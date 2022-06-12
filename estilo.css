@@ -381,7 +381,7 @@ body{
 
 .sessao-carrinho{    
     background: #0a0a0a;
-    width: 400px;
+    width: 500px;
     height: 500px;
     right: 0px;
     top: 65px; 
@@ -391,15 +391,32 @@ body{
     border-radius: 10px;
     text-align: center;
     opacity: 0.9;
+    transition: 3s;
 }
 
 .sessao-carrinho.active{
     display: block;
 }
+.cartClear {
+    background: #222;
+    border-radius: 4px;
+    padding: 5px 15px;
+    margin-top: 2rem;
+    max-width: 8rem;
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    right: 0px;
+    cursor: pointer;
+}
+.cartClear:hover {
+    background: #333;
+    transition: 0.3s;
+}
 
 
 .sessao-compras h1{
-    color: #D2A10B;
+    color: #997404;
     font-family: 'Roboto',helvetica, Arial;
     padding: 0px;
     text-align: center;
@@ -407,12 +424,37 @@ body{
 
 .relogios-valores {
     display: flex;
-    margin-top: 350px;
+    margin-top: 0px;
+    align-items: center;
     justify-content: space-around;
 }
 
+.fechamento-carrinho {
+    display: flex;
+    justify-content: space-around;
+}
 
-
+.product {
+    width: 100%;
+    background: #886807;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+.product img{
+    width: 40px;
+    height: 50px;
+}
+.name-cart{
+    margin-bottom: 1.5rem;
+}
+.fechamento-total {
+    display: flex;
+    color: rgb(213, 224, 47);
+    align-items: flex-end;
+    justify-content: center;
+}
 
 .sessao-compras div{
     display: none;

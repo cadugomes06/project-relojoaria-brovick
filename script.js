@@ -83,6 +83,7 @@ function onLoadCartNumbers() {
   if ( productNumbers ) {
     document.querySelector('.valueCart').textContent = productNumbers
   }
+  
 }
 function cartNumbers(relogios) {
 
@@ -97,54 +98,83 @@ function cartNumbers(relogios) {
     document.querySelector('.valueCart').textContent = 1
   }
  setItens(relogios)
+ displayCart()
 }
 
 function totalCost(relogios) {
   let totalStorage = localStorage.getItem('totalCost')
+  let fechamento = document.querySelector('.total-final')
   
   if (totalStorage != null) {
     totalStorage = parseInt(totalStorage)
     localStorage.setItem('totalCost', relogios.price + totalStorage)  
+    fechamento.innerHTML = localStorage.getItem('totalCost',  relogios.price + totalStorage)
   } else {
     localStorage.setItem('totalCost', relogios.price)  
+    fechamento.innerHTML = ' ' +  localStorage.getItem('totalCost',  relogios.price) + ',00'
   }
-  console.log(relogios.price)
-
 }
 
 function setItens(relogios) {
-  let cartItens = localStorage.getItem('relogiosInCart')
+  let cartItems = localStorage.getItem('relogiosInCart')
+  cartItems = JSON.parse(cartItems)
 
-  if (relogios.inCart == 0) {
-    relogios.inCart = 1
+  if (cartItems != null) {
+  if (cartItems[relogios.tag] == undefined) {
+    cartItems = {
+      ...cartItems, [relogios.tag]: relogios
+    }
+  }
+  cartItems[relogios.tag].inCart += 1;
   }  else {
-    relogios.inCart += 1
+    relogios.inCart = 1
+    cartItems = {
+      [relogios.tag]: relogios
+    }
   }
-  cartItens = {
-    [relogios.tag]: relogios
-  }
-  localStorage.setItem('relogiosInCart', JSON.stringify(cartItens))
+  localStorage.setItem('relogiosInCart', JSON.stringify(cartItems))
 }
 
 function displayCart() {
   let cartItems = localStorage.getItem('relogiosInCart')
   cartItems = JSON.parse(cartItems)
-  
-  let cartSection = document.querySelector('.relogios-valores')
+  let cartSection = document.querySelector('.products')
+
   if ( cartItems && cartSection  ) {
-     cartSection.innerHTML = '';
-     Object.values(cartItems).map((item) => {
-       cartSection.innerHTML += 
-       `<div class='products'>
-       <i class="fa-solid fa-circle-xmark"></i>
-        <img src='/img/${item.tag}.jpg' width='40px'/>
-        <span >${item.name}</span>
-        </div>
-        <div class='price'>R$${item.price}</div>
-        <div class='quantity'></div> `
-     })
+    cartSection.innerHTML = '';
+    Object.values(cartItems).map(item => {
+      cartSection.innerHTML += 
+      `
+      <div class='product'>
+      <i class="fa-solid fa-circle-xmark"></i>
+      <img src='/img/${item.tag}.jpg' width='40px'/>
+      <span >${item.name}</span>
+      <span >${item.inCart}</span>
+      <span >Preço:R$ ${item.price}</span>
+      <span class='total'>
+      Total: R$${item.inCart * item.price}
+      </span>
+      </div>
+      `
+      //<h3 class='total-final'>Total final: R$ ${localStorage.getItem('totalCost') }</h3>
+    })
   }
 }
-
-onLoadCartNumbers()
 displayCart() 
+onLoadCartNumbers()
+
+/* ----------Limpando o carrinho -------------- */
+  const btnClear = document.querySelector('.cartClear')
+
+ function cartClear() {
+   localStorage.setItem('cartNumbers', 0)
+   localStorage.setItem('totalCost', 0)
+   document.querySelector('.valueCart').textContent = 0
+   localStorage.setItem('relogiosInCart', null)
+   let cartSection = document.querySelector('.products')
+   cartSection.innerHTML = ''
+   let fechamento = document.querySelector('.total-final')
+   fechamento.innerHTML = ''
+   console.log('funcionando')
+ }
+  btnClear.addEventListener('click', cartClear)
