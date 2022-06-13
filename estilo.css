@@ -234,6 +234,13 @@ body{
 .btn-comprar:hover {
     background: #bb931d;
 }
+.addItens {
+    transition: .5s;
+}
+
+.addItens.ativandoModal {
+    background: #523e02;
+}
 
 @media (max-width: 750px){
     .info-relogio h1{
@@ -353,18 +360,18 @@ body{
 }
 
 .footer{
-    background: #2c2100;
+    background: #1d1600;
     margin: 0px;
     padding: 20px 0px;    
 }
 .footer h3{
-    color: #978658;
-    padding: 5px 50px;
+    color: #928254;
     font-family: 'IMB Plex Sans Thai Looped', Helvetica, Arial;  
-    text-align: center;  
+    text-align: center;
+    font-size: 1rem;
 }
 .footer p{
-    color: #978658;
+    color: #817552;
     text-align: center;
     margin-top: 3rem;
 }
@@ -463,7 +470,6 @@ body{
     font-size: 1rem;
     color: #ff9a01;
 }
-
 
 
 /* ------------ Resonsivo ------------- */

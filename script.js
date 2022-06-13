@@ -22,10 +22,6 @@ ativandoSlide();
 /* Slide de produtos exclusivos */
 
 /* Carrinho de compras */
-const car = document.querySelector(".carrinho");
-const menuCarrinho = document.querySelector(".sessao-carrinho");
-const btnAdicionar = document.querySelectorAll('.addItens'); 
-const rel = document.querySelectorAll('.relogio')
 
 let relogios = [
   {
@@ -66,14 +62,19 @@ let relogios = [
   },
 ]
 
+const menuCarrinho = document.querySelector(".sessao-carrinho");
+const btnAdicionar = document.querySelectorAll('.addItens'); 
+const rel = document.querySelectorAll('.relogio')
+const car = document.querySelector(".carrinho");
+
 function toggleMenu() {
     menuCarrinho.classList.toggle("active");  
-}
-car.addEventListener("click", toggleMenu);
-
-
-for (let i = 0; i < btnAdicionar.length; i++ ) {
-  btnAdicionar[i].addEventListener('click', () => {
+  }
+  car.addEventListener("click", toggleMenu);
+  
+  
+  for (let i = 0; i < btnAdicionar.length; i++ ) {
+    btnAdicionar[i].addEventListener('click', () => {
     cartNumbers(relogios[i]);
     totalCost(relogios[i])
   })
@@ -86,7 +87,6 @@ function onLoadCartNumbers() {
   
 }
 function cartNumbers(relogios) {
-
   productNumbers = localStorage.getItem('cartNumbers')
   productNumbers = parseInt(productNumbers)
 
@@ -178,3 +178,22 @@ onLoadCartNumbers()
    console.log('funcionando')
  }
   btnClear.addEventListener('click', cartClear)
+
+/* ----------Feedback de compra pro usuário --------------- */
+
+const modal = document.querySelectorAll('.addItens') 
+
+function ativarModal(bt) {
+  bt.classList.add('ativandoModal')
+  bt.innerText = 'Item adicionado' 
+  setTimeout(() => {
+    bt.classList.remove('ativandoModal')
+    bt.innerText = 'comprar'
+  }, 800)
+}
+
+modal.forEach((bt) => {
+  bt.addEventListener('click', () => {
+    ativarModal(bt)
+  })
+})    
