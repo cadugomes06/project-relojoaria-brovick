@@ -149,13 +149,13 @@ function displayCart() {
       <i class="fa-solid fa-circle-xmark"></i>
       <img src='/img/${item.tag}.jpg' width='40px'/>
       <span >${item.name}</span>
-      <span >${item.inCart}</span>
+      <span >Un/ ${item.inCart}</span>
       <span >Preço:R$ ${item.price}</span>
-      <span class='total'>
-      Total: R$${item.inCart * item.price}
-      </span>
       </div>
       `
+     /* <span class='total'>
+      Todos: R$ ${item.inCart * item.price}
+      </span>*/
       //<h3 class='total-final'>Total final: R$ ${localStorage.getItem('totalCost') }</h3>
     })
   }
